@@ -2,6 +2,8 @@
 
 A complete, production-ready PDF conversion web application with monetization features built for passive income.
 
+**Status:** Live in production 🚀
+
 ## Features
 
 ### Core Functionality
