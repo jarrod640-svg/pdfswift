@@ -53,6 +53,7 @@ router.post('/create-checkout-session', authenticateToken, async (req, res) => {
                 },
             ],
             mode: 'subscription',
+            allow_promotion_codes: true,
             success_url: `${process.env.APP_URL || 'http://localhost:3000'}?session_id={CHECKOUT_SESSION_ID}&success=true`,
             cancel_url: `${process.env.APP_URL || 'http://localhost:3000'}?canceled=true`,
             metadata: {
