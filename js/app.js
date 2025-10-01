@@ -506,3 +506,197 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Footer Link Functions
+function showPrivacyPolicy() {
+    const modal = document.getElementById('converterModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = 'Privacy Policy';
+    modalBody.innerHTML = `
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <h3>Privacy Policy for PDFSwift Pro</h3>
+            <p><strong>Effective Date:</strong> ${new Date().toLocaleDateString()}</p>
+
+            <h4>1. Information We Collect</h4>
+            <p>We collect minimal personal information:</p>
+            <ul>
+                <li><strong>Account Information:</strong> Email address, name, and password (encrypted)</li>
+                <li><strong>Payment Information:</strong> Processed securely through Stripe (we never store card details)</li>
+                <li><strong>Usage Data:</strong> Conversion count, timestamps (to enforce free tier limits)</li>
+            </ul>
+
+            <h4>2. How We Use Your Information</h4>
+            <ul>
+                <li>Provide PDF conversion services</li>
+                <li>Process payments and manage subscriptions</li>
+                <li>Enforce usage limits for free tier</li>
+                <li>Send account-related notifications</li>
+            </ul>
+
+            <h4>3. Privacy-First File Processing</h4>
+            <p><strong>Your files are NOT uploaded to our servers.</strong> Basic conversions (PDF↔Image, Merge, Split, Compress) are processed entirely in your browser using JavaScript. Your files never leave your device.</p>
+
+            <h4>4. Data Security</h4>
+            <ul>
+                <li>Passwords are hashed using bcrypt</li>
+                <li>HTTPS encryption for all communications</li>
+                <li>Payment processing via Stripe (PCI compliant)</li>
+            </ul>
+
+            <h4>5. Third-Party Services</h4>
+            <ul>
+                <li><strong>Stripe:</strong> Payment processing (see Stripe's privacy policy)</li>
+                <li><strong>Railway:</strong> Hosting infrastructure</li>
+            </ul>
+
+            <h4>6. Your Rights</h4>
+            <p>You can:</p>
+            <ul>
+                <li>Access your account data</li>
+                <li>Delete your account (contact support@pdfswiftpro.com)</li>
+                <li>Export your data</li>
+                <li>Opt out of marketing emails</li>
+            </ul>
+
+            <h4>7. Contact Us</h4>
+            <p>For privacy concerns: <a href="mailto:admin@pdfswiftpro.com">admin@pdfswiftpro.com</a></p>
+        </div>
+    `;
+
+    modal.classList.add('active');
+}
+
+function showTermsOfService() {
+    const modal = document.getElementById('converterModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = 'Terms of Service';
+    modalBody.innerHTML = `
+        <div style="max-width: 800px; margin: 0 auto; text-align: left;">
+            <h3>Terms of Service for PDFSwift Pro</h3>
+            <p><strong>Effective Date:</strong> ${new Date().toLocaleDateString()}</p>
+
+            <h4>1. Acceptance of Terms</h4>
+            <p>By using PDFSwift Pro, you agree to these Terms of Service. If you disagree, please do not use our service.</p>
+
+            <h4>2. Service Description</h4>
+            <p>PDFSwift Pro provides online PDF conversion tools including:</p>
+            <ul>
+                <li>Free tier: 3 conversions per day with basic tools</li>
+                <li>Pro tier ($9.99/month): Unlimited conversions and advanced features</li>
+                <li>Business tier ($29/month): Everything in Pro plus team features</li>
+            </ul>
+
+            <h4>3. User Responsibilities</h4>
+            <p>You agree to:</p>
+            <ul>
+                <li>Provide accurate account information</li>
+                <li>Keep your password secure</li>
+                <li>Not abuse or exploit the service</li>
+                <li>Not use for illegal purposes</li>
+                <li>Not upload malicious files</li>
+            </ul>
+
+            <h4>4. Subscription Terms</h4>
+            <ul>
+                <li><strong>Billing:</strong> Subscriptions renew automatically monthly or yearly</li>
+                <li><strong>Cancellation:</strong> Cancel anytime; access continues until period end</li>
+                <li><strong>Refunds:</strong> No refunds for partial months</li>
+                <li><strong>Price Changes:</strong> We'll notify you 30 days before any price increases</li>
+            </ul>
+
+            <h4>5. Acceptable Use</h4>
+            <p>You may NOT:</p>
+            <ul>
+                <li>Resell or redistribute our service</li>
+                <li>Reverse engineer our software</li>
+                <li>Attempt to bypass usage limits</li>
+                <li>Use automated tools to abuse the service</li>
+            </ul>
+
+            <h4>6. Service Availability</h4>
+            <p>We strive for 99.9% uptime but do not guarantee uninterrupted service. We're not liable for downtime.</p>
+
+            <h4>7. Intellectual Property</h4>
+            <p>PDFSwift Pro's code, design, and branding are our property. Your uploaded files remain your property.</p>
+
+            <h4>8. Limitation of Liability</h4>
+            <p>We're not responsible for:</p>
+            <ul>
+                <li>Data loss or corruption</li>
+                <li>Conversion errors or inaccuracies</li>
+                <li>Indirect or consequential damages</li>
+            </ul>
+
+            <h4>9. Termination</h4>
+            <p>We may suspend or terminate accounts that violate these terms.</p>
+
+            <h4>10. Changes to Terms</h4>
+            <p>We may update these terms. Continued use after changes means acceptance.</p>
+
+            <h4>11. Contact</h4>
+            <p>Questions? Email: <a href="mailto:admin@pdfswiftpro.com">admin@pdfswiftpro.com</a></p>
+        </div>
+    `;
+
+    modal.classList.add('active');
+}
+
+function showHelpCenter() {
+    const modal = document.getElementById('converterModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+
+    modalTitle.textContent = 'Help Center';
+    modalBody.innerHTML = `
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h3>Frequently Asked Questions</h3>
+
+            <div style="margin: 2rem 0;">
+                <h4>🔒 Is my data secure?</h4>
+                <p>Yes! Basic conversions are processed entirely in your browser - your files never leave your device. We never store your PDF files on our servers.</p>
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <h4>💳 How does billing work?</h4>
+                <p>Pro subscriptions ($9.99/month) are billed automatically via Stripe. You can cancel anytime and keep access until your billing period ends.</p>
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <h4>📊 What's included in the free tier?</h4>
+                <p>Free users get 3 conversions per day with basic tools (PDF↔Image, Merge, Split, Compress). Pro users get unlimited conversions and advanced features.</p>
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <h4>🔄 Can I convert large files?</h4>
+                <p>Free tier: 10MB limit<br>Pro tier: 100MB limit<br>Business tier: 500MB limit</p>
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <h4>❌ How do I cancel my subscription?</h4>
+                <p>Email us at <a href="mailto:support@pdfswiftpro.com">support@pdfswiftpro.com</a> or manage your subscription in your account dashboard.</p>
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <h4>📧 Still need help?</h4>
+                <p>Contact our support team:</p>
+                <p><a href="mailto:support@pdfswiftpro.com" class="btn-primary" style="display: inline-block; margin-top: 0.5rem;">
+                    <i class="fas fa-envelope"></i> Email Support
+                </a></p>
+                <p style="margin-top: 1rem; color: var(--text-light);">
+                    We typically respond within 24 hours
+                </p>
+            </div>
+
+            <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                <h4>💬 AI Chat Support (Coming Soon)</h4>
+                <p>We're working on adding AI-powered chat support for instant answers!</p>
+            </div>
+        </div>
+    `;
+
+    modal.classList.add('active');
+}
