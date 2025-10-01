@@ -691,9 +691,10 @@ function showHelpCenter() {
                 </p>
             </div>
 
-            <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
-                <h4>💬 AI Chat Support (Coming Soon)</h4>
-                <p>We're working on adding AI-powered chat support for instant answers!</p>
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+                <h4>💬 Live Chat Support Available!</h4>
+                <p>Look for the chat bubble in the bottom-right corner of your screen for instant help!</p>
+                <p style="margin-top: 0.5rem;">Our team is here to assist you.</p>
             </div>
         </div>
     `;
