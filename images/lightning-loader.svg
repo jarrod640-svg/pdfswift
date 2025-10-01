@@ -1,0 +1,46 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="lightning-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+        </linearGradient>
+
+        <!-- Pulse animation for circle -->
+        <style>
+            @keyframes pulse {
+                0%, 100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.7;
+                    transform: scale(1.05);
+                }
+            }
+
+            @keyframes flash {
+                0%, 100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.6;
+                }
+            }
+
+            .lightning-circle {
+                animation: pulse 1.5s ease-in-out infinite;
+                transform-origin: center;
+            }
+
+            .lightning-bolt {
+                animation: flash 1s ease-in-out infinite;
+            }
+        </style>
+    </defs>
+
+    <!-- Circular background -->
+    <circle class="lightning-circle" cx="40" cy="40" r="35" fill="url(#lightning-gradient)"/>
+
+    <!-- Lightning bolt -->
+    <path class="lightning-bolt" d="M48 18 L28 42 L38 42 L32 62 L52 38 L42 38 Z" fill="white"/>
+</svg>

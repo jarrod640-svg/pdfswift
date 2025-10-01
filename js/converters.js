@@ -267,7 +267,7 @@ function createUploadUI(toolType) {
 function createProcessingUI() {
     return `
         <div class="processing">
-            <div class="spinner"></div>
+            <img src="images/lightning-loader.svg" alt="Processing" style="width: 80px; height: 80px; margin-bottom: 1rem;">
             <h3>Processing your file...</h3>
             <p>This may take a moment</p>
         </div>
