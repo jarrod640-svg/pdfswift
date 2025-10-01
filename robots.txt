@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pdfswiftpro.com/sitemap.xml
+
+# Disallow private/admin areas (if any in the future)
+Disallow: /api/
