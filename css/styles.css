@@ -33,6 +33,34 @@ body {
     padding: 0 20px;
 }
 
+/* Promo Banner */
+.promo-banner {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.promo-banner strong {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255,255,255,0.5);
+}
+
+@media (max-width: 768px) {
+    .promo-banner p {
+        font-size: 0.85rem !important;
+    }
+    .promo-banner span {
+        display: block;
+        margin-left: 0 !important;
+        margin-top: 4px;
+    }
+}
+
 /* Navigation */
 .navbar {
     background: var(--bg-white);
