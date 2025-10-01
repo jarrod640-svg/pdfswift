@@ -276,6 +276,35 @@ class AuthManager {
         }, 100);
     }
 
+    async cancelSubscription() {
+        if (!confirm('Are you sure you want to cancel your subscription? You will keep access until the end of your billing period.')) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`${this.apiUrl}/payments/cancel-subscription`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.token}`
+                }
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Subscription cancelled successfully. You will keep access until ' + new Date(data.cancelAt * 1000).toLocaleDateString());
+                await this.validateToken(); // Refresh user data
+                this.showDashboard(); // Refresh dashboard
+            } else {
+                alert(data.error || 'Failed to cancel subscription');
+            }
+        } catch (error) {
+            console.error('Cancel error:', error);
+            alert('An error occurred. Please try again.');
+        }
+    }
+
     async showDashboard() {
         const usage = await this.getUsageStats();
         const tierInfo = {
@@ -321,8 +350,8 @@ class AuthManager {
                     </div>
                 ` : `
                     <div style="text-align: center; margin-top: 2rem;">
-                        <button class="btn-secondary" onclick="alert('Subscription management coming soon!')">
-                            Manage Subscription
+                        <button class="btn-secondary" onclick="auth.cancelSubscription(); return false;">
+                            <i class="fas fa-times-circle"></i> Cancel Subscription
                         </button>
                     </div>
                 `}
