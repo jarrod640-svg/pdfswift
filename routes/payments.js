@@ -70,7 +70,7 @@ router.post('/create-checkout-session', authenticateToken, async (req, res) => {
 });
 
 // Stripe webhook handler
-router.post('/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
+const webhookHandler = async (req, res) => {
     const sig = req.headers['stripe-signature'];
 
     let event;
@@ -186,7 +186,10 @@ router.post('/webhook', express.raw({ type: 'application/json' }), async (req, r
     }
 
     res.json({ received: true });
-});
+};
+
+// Register webhook handler on router
+router.post('/webhook', webhookHandler);
 
 // Get subscription status
 router.get('/subscription-status', authenticateToken, async (req, res) => {
@@ -262,3 +265,4 @@ router.post('/cancel-subscription', authenticateToken, async (req, res) => {
 });
 
 module.exports = router;
+module.exports.webhook = webhookHandler;

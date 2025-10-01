@@ -9,6 +9,10 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
+
+// Stripe webhook needs raw body - must be before express.json()
+app.post('/api/payments/webhook', express.raw({type: 'application/json'}), require('./routes/payments').webhook);
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
