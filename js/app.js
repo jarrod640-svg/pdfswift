@@ -381,7 +381,8 @@ async function upgradeToPlan(plan) {
             // Redirect to Stripe checkout
             window.location.href = data.url;
         } else {
-            alert('Failed to create checkout session. Please try again.');
+            console.error('Checkout error:', data);
+            alert(data.error || 'Failed to create checkout session. Please try again.');
         }
     } catch (error) {
         console.error('Checkout error:', error);
