@@ -344,18 +344,49 @@ function showPricing() {
     document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
 }
 
-function upgradeToPlan(plan) {
+async function upgradeToPlan(plan) {
     if (!auth.user) {
         showAuthModal('signup');
         return;
     }
 
-    // In production, this would integrate with Stripe
-    alert(`Stripe checkout for ${plan} plan will be integrated here.\n\nFor now, this is a demo. The backend includes full Stripe integration code.`);
+    // Map plan to Stripe Price IDs
+    const priceIds = {
+        'pro': 'price_1SDHGjRPptJDPovShREfqHaJ', // Pro Monthly
+        'pro-yearly': 'price_1SDHIZRPptJDPovSVnXSJygU', // Pro Yearly
+        'business': 'price_1SDHKFRPptJDPovS8JiG3Ioe', // Business Monthly
+        'business-yearly': 'price_1SDHLDRPptJDPovSEtX5kZ3L' // Business Yearly
+    };
 
-    // Demo: Simulate upgrade
-    // auth.user.subscription_tier = plan;
-    // auth.updateUI();
+    const priceId = priceIds[plan];
+    if (!priceId) {
+        alert('Invalid plan selected');
+        return;
+    }
+
+    try {
+        // Call backend to create Stripe checkout session
+        const response = await fetch(`${auth.apiUrl}/payments/create-checkout-session`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth.token}`
+            },
+            body: JSON.stringify({ priceId, plan })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.url) {
+            // Redirect to Stripe checkout
+            window.location.href = data.url;
+        } else {
+            alert('Failed to create checkout session. Please try again.');
+        }
+    } catch (error) {
+        console.error('Checkout error:', error);
+        alert('An error occurred. Please try again.');
+    }
 }
 
 // Auth Modal Functions
