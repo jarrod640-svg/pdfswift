@@ -10,6 +10,6 @@
     <!-- Lightning bolt -->
     <path d="M24 8 L14 22 L19 22 L16 32 L26 18 L21 18 Z" fill="white"/>
     <!-- Text -->
-    <text x="44" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16" font-weight="800" fill="currentColor">PDFSwift</text>
+    <text x="44" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="16" font-weight="800" fill="#1e293b">PDFSwift</text>
     <text x="44" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif" font-size="9" font-weight="600" fill="#667eea" letter-spacing="1.5">PRO</text>
 </svg>
