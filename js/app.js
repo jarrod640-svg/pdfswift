@@ -350,12 +350,12 @@ async function upgradeToPlan(plan) {
         return;
     }
 
-    // Map plan to Stripe Price IDs
+    // Map plan to Stripe Price IDs (LIVE)
     const priceIds = {
-        'pro': 'price_1SDHGjRPptJDPovShREfqHaJ', // Pro Monthly
-        'pro-yearly': 'price_1SDHIZRPptJDPovSVnXSJygU', // Pro Yearly
-        'business': 'price_1SDHKFRPptJDPovS8JiG3Ioe', // Business Monthly
-        'business-yearly': 'price_1SDHLDRPptJDPovSEtX5kZ3L' // Business Yearly
+        'pro': 'price_1SDI7GIgy3bHAOtxzy2ojZ8v', // Pro Monthly
+        'pro-yearly': 'price_1SDI90Igy3bHAOtxoKM9KR3w', // Pro Yearly
+        'business': 'price_1SDI9PIgy3bHAOtxPZ3hicC4', // Business Monthly
+        'business-yearly': 'price_1SDI9mIgy3bHAOtxjXDIplMl' // Business Yearly
     };
 
     const priceId = priceIds[plan];
