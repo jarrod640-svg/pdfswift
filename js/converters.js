@@ -174,6 +174,23 @@ class PDFConverter {
         }];
     }
 
+    // Worksheet Generator - Parse PDF to editable template
+    async worksheetGenerator(file) {
+        // This method delegates to the WorksheetTemplateManager
+        // The actual template editing is handled in templates.js
+        if (typeof worksheetManager === 'undefined') {
+            throw new Error('Worksheet Template Manager not loaded');
+        }
+
+        // Parse the PDF into an editable template
+        const template = await worksheetManager.parsePdfToTemplate(file);
+
+        return {
+            template: template,
+            message: 'PDF parsed successfully. Use the template editor to customize your worksheet.'
+        };
+    }
+
     // Helper: Load image from file
     loadImage(file) {
         return new Promise((resolve, reject) => {
@@ -230,6 +247,7 @@ function createUploadUI(toolType) {
         'merge-pdf': '.pdf',
         'split-pdf': '.pdf',
         'compress-pdf': '.pdf',
+        'worksheet-generator': '.pdf',
         'pdf-to-word': '.pdf',
         'pdf-to-excel': '.pdf',
         'pdf-to-ppt': '.pdf'
