@@ -76,6 +76,7 @@ async function openConverter(toolType) {
         'merge-pdf': 'Merge PDFs',
         'split-pdf': 'Split PDF',
         'compress-pdf': 'Compress PDF',
+        'worksheet-generator': 'Worksheet Generator',
         'pdf-to-word': 'PDF to Word',
         'pdf-to-excel': 'PDF to Excel',
         'pdf-to-ppt': 'PDF to PowerPoint'
@@ -86,13 +87,34 @@ async function openConverter(toolType) {
     const modalBody = document.getElementById('modalBody');
 
     modalTitle.textContent = toolTitles[toolType] || 'PDF Converter';
-    modalBody.innerHTML = createUploadUI(toolType);
 
-    // Update usage tracker
-    await updateUsageTracker();
-
-    // Setup file upload handlers
-    setupFileUpload(toolType);
+    // Special handling for worksheet generator - show template selection
+    if (toolType === 'worksheet-generator') {
+        modalBody.innerHTML = worksheetManager.generateTemplateSelectionUI();
+        // Attach file upload listener for custom PDF
+        const fileInput = document.getElementById('templateFileInput');
+        if (fileInput) {
+            fileInput.addEventListener('change', async (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    try {
+                        modalBody.innerHTML = '<div class="loading"><i class="fas fa-spinner fa-spin"></i><p>Parsing PDF...</p></div>';
+                        const template = await worksheetManager.parsePdfToTemplate(file);
+                        worksheetManager.showTemplateEditor(template);
+                    } catch (error) {
+                        alert(error.message);
+                        openConverter('worksheet-generator'); // Reset
+                    }
+                }
+            });
+        }
+    } else {
+        modalBody.innerHTML = createUploadUI(toolType);
+        // Update usage tracker
+        await updateUsageTracker();
+        // Setup file upload handlers
+        setupFileUpload(toolType);
+    }
 
     modal.classList.add('active');
 }
@@ -150,6 +172,7 @@ function handleFiles(files, toolType) {
         'merge-pdf': ['application/pdf'],
         'split-pdf': ['application/pdf'],
         'compress-pdf': ['application/pdf'],
+        'worksheet-generator': ['application/pdf'],
         'pdf-to-word': ['application/pdf'],
         'pdf-to-excel': ['application/pdf'],
         'pdf-to-ppt': ['application/pdf']

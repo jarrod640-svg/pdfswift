@@ -152,7 +152,7 @@ class AuthManager {
 
     canAccessPremiumFeature(feature) {
         const tier = this.getUserTier();
-        const premiumFeatures = ['pdf-to-word', 'pdf-to-excel', 'pdf-to-ppt'];
+        const premiumFeatures = ['pdf-to-word', 'pdf-to-excel', 'pdf-to-ppt', 'worksheet-generator'];
 
         if (premiumFeatures.includes(feature)) {
             return tier === 'pro' || tier === 'business';
